@@ -18,6 +18,8 @@ function noDelaySetInterval(func, interval) {
   return setInterval(func, interval);
 }
 
+// TODO see if lag can be reduced or removed when removing time
+
 function countDown(timeInterval) {
   var timeInterval = noDelaySetInterval(function () {
     if (timeLeft > 1) {

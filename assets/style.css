@@ -99,3 +99,16 @@ header{
     padding: 4rem;
 }
 
+@media screen and (max-width: 768px) {
+    .starting-box,
+    .questions-box,
+    .timer{
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .answer-boxes button{
+        width: 10rem;
+     
+    }
+}
