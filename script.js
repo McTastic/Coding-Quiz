@@ -102,7 +102,7 @@ var questionArray = [
 function renderQuestion() {
   questionEl.style.display = "block";
   startBox.style.display = "none";
-//   for loop which displays question and answers
+  //   for loop which displays question and answers
   for (var i = 0; i < questionArray.length; i++) {
     if (i < questionArray.length) {
       var nextQuestion = questionArray[currentQuestion].q;
@@ -129,7 +129,6 @@ function correctAnswer() {
     points += 10;
     currentQuestion++;
     renderQuestion();
-    
   } else {
     timeLeft -= 5;
     console.log(timeLeft);
@@ -151,7 +150,6 @@ function gameOver() {
 
 // TODO make high score page and points function correctly
 // TODO gameOver needs end state if all questions answered
-
 
 function init() {
   restartBtn.style.display = "none";
