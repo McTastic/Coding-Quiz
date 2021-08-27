@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    min-height: 100%;
     display:flex;
     flex-direction: column;
     font-family: "Lucida Console", Monaco, monospace;
@@ -8,8 +7,8 @@ body {
     letter-spacing: 1px;
     align-items: center;
     background-color: rgb(15, 12, 49);
-    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://images.wallpaperscraft.com/image/stars_milky_way_space_116893_3840x2160.jpg);
-    background-size: 100%;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://images.wallpaperscraft.com/image/stars_milky_way_space_116893_3840x2160.jpg) no-repeat;
+    background-size: cover;
 }
 
 html {
@@ -31,7 +30,30 @@ header{
 }
 
 .questions-box{
-    font-size: 4rem;
+    font-size: 3rem;
+    width: 65%;
+    text-align: center;
+    /* border: solid blue; */
+}
+
+
+.answer-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 55%;
+    margin: 2rem;
+    /* border: solid green; */
+    font-size: 2.5rem;
+}
+
+.answer-boxes button{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 4rem;
 }
 
 .buttons{
@@ -65,6 +87,8 @@ header{
 .timer{
     /* border: solid yellow; */
     font-size: 4rem;
+    position: relative;
+    bottom: -2rem;
 }
 
 .high-score-header{
@@ -74,3 +98,4 @@ header{
 .points{
     padding: 4rem;
 }
+
