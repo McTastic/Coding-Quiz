@@ -184,7 +184,7 @@ header{
     }
 
     .point-box{
-        display: none;
+        font-size: 1rem;
     }
 
     #restart{
