@@ -13,7 +13,7 @@ var answerA = document.getElementById("choiceA");
 var answerB = document.getElementById("choiceB");
 var answerC = document.getElementById("choiceC");
 var answerD = document.getElementById("choiceD");
-var timeLeft = 30;
+var timeLeft = 60;
 var points = 0;
 var currentQuestion = 0;
 
@@ -132,6 +132,7 @@ function correctAnswer() {
   var userChoice = this.textContent;
   if (userChoice !== answer) {
     timeLeft -= 5;
+    timerEl.textContent="Time Remaining " + timeLeft;
   } else if (currentQuestion === 9 && userChoice === answer) {
     points += 10 + timeLeft;
     pointsEl.textContent = "Score " + points;
@@ -154,6 +155,7 @@ function restartButton() {
 function gameOver() {
   answersEl.style.display = "none";
   questionEl.style.display = "none";
+  pointsEl.style.display = "none";
   submitFormEl.style.display = "block";
   restartBtn.style.display = "block";
   highScoreBtn.style.display = "block";
@@ -180,7 +182,6 @@ submitBtn.addEventListener("click", function () {
   event.preventDefault();
   location.replace("high-scores.html");
   localStorage.setItem("PlayerName",userImput.value)
-  alert(userImput);
 });
 
 startBtn.addEventListener("click", function () {

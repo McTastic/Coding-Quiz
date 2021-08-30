@@ -115,17 +115,15 @@ header{
 }
 
 .point-box{
-    position: relative;
-    bottom: 20rem;
-    right: -40rem;
+    position: absolute;
     padding: 1rem;
     font-size: 3rem;
 }
 
 .name-submission{
-    position: relative;
-    bottom: -5rem;
-    left: -3rem;
+    position: absolute;
+    bottom: 20rem;
+    left: 50rem;
 }
 
 .table{
