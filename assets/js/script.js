@@ -8,13 +8,11 @@ var questionEl = document.getElementById("qBox");
 var pointsEl = document.getElementById("points");
 var answersEl = document.getElementById("aBox");
 var submitFormEl = document.getElementById("submitForm");
-var highScoreEl = document.getElementById("score");
-var userNameEl = document.getElementById("userName");
+var userImput = document.getElementById("exampleInputName2");
 var answerA = document.getElementById("choiceA");
 var answerB = document.getElementById("choiceB");
 var answerC = document.getElementById("choiceC");
 var answerD = document.getElementById("choiceD");
-var getScore = localStorage.getItem("Score");
 var timeLeft = 30;
 var points = 0;
 var currentQuestion = 0;
@@ -24,9 +22,7 @@ function noDelaySetInterval(func, interval) {
   func();
   return setInterval(func, interval);
 }
-
-// TODO see if lag can be reduced or removed when removing time
-
+// function for timer
 function countDown(timeInterval) {
   var timeInterval = noDelaySetInterval(function () {
     if (points > 100) {
@@ -130,22 +126,22 @@ function renderQuestion() {
     }
   }
 }
-
+// checks if user chooses the correct answer
 function correctAnswer() {
   var answer = questionArray[currentQuestion].correct;
   var userChoice = this.textContent;
-  if (currentQuestion === 9 && userChoice === answer) {
+  if (userChoice !== answer) {
+    timeLeft -= 5;
+  } else if (currentQuestion === 9 && userChoice === answer) {
     points += 10 + timeLeft;
     pointsEl.textContent = "Score " + points;
     gameOver();
-  } else if (userChoice === answer) {
+  } else {
     points += 10;
     pointsEl.textContent = "Score " + points;
     currentQuestion++;
     renderQuestion();
-  } else {
-    timeLeft -= 5;
-    console.log(timeLeft);
+
   }
 }
 
@@ -171,7 +167,6 @@ function highScore() {
   localStorage.setItem("Score", points);
 }
 
-// TODO make high score page populate values (create another JS file to do this)
 // TODO see if you can get multiple high score values to save
 
 function init() {
@@ -181,14 +176,11 @@ function init() {
   submitFormEl.style.display = "none";
 }
 
-function initHighScore() {
-  highScoreEl.textContent = getScore;
-  // userNameEl.textContent = getName;
-}
-
 submitBtn.addEventListener("click", function () {
   event.preventDefault();
   location.replace("high-scores.html");
+  localStorage.setItem("PlayerName",userImput.value)
+  alert(userImput);
 });
 
 startBtn.addEventListener("click", function () {
@@ -202,5 +194,3 @@ startBtn.addEventListener("click", function () {
 });
 
 init();
-// TODO Maybe get rid of this? Making js file so shouldn't need
-initHighScore();
