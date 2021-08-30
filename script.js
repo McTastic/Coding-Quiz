@@ -1,18 +1,25 @@
 var startBtn = document.getElementById("start");
+var submitBtn = document.getElementById("submit");
+var restartBtn = document.getElementById("restart");
+var highScoreBtn = document.getElementById("highScores");
 var timerEl = document.getElementById("time");
 var startBox = document.getElementById("start-box");
 var questionEl = document.getElementById("qBox");
-var restartBtn = document.getElementById("restart");
 var pointsEl = document.getElementById("points");
 var answersEl = document.getElementById("aBox");
+var submitFormEl = document.getElementById("submitForm");
+var highScoreEl = document.getElementById("score");
+var userNameEl = document.getElementById("userName");
 var answerA = document.getElementById("choiceA");
 var answerB = document.getElementById("choiceB");
 var answerC = document.getElementById("choiceC");
 var answerD = document.getElementById("choiceD");
+var getScore = localStorage.getItem("Score");
 var timeLeft = 30;
 var points = 0;
 var currentQuestion = 0;
 
+// small function to remove initial lag when timer starts
 function noDelaySetInterval(func, interval) {
   func();
   return setInterval(func, interval);
@@ -22,14 +29,14 @@ function noDelaySetInterval(func, interval) {
 
 function countDown(timeInterval) {
   var timeInterval = noDelaySetInterval(function () {
-    if (timeLeft > 1) {
-      timerEl.textContent = timeLeft + " seconds remaining";
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      timerEl.textContent = timeLeft + " second remaining";
+    if (points > 100) {
+      timerEl.textContent = "Great job! You scored " + points + " points!";
+      clearInterval(timeInterval);
+    } else if (timeLeft > 1) {
+      timerEl.textContent = "Time Remaining " + timeLeft;
       timeLeft--;
     } else {
-      timerEl.textContent = "Time's Up!";
+      timerEl.textContent = "Time's Up! You scored " + points + " points!";
       clearInterval(timeInterval);
       gameOver();
     }
@@ -119,7 +126,7 @@ function renderQuestion() {
       answerD.textContent = questionArray[currentQuestion].a[3];
       answerD.addEventListener("click", correctAnswer);
     } else {
-      gameOver();
+      return gameOver();
     }
   }
 }
@@ -127,8 +134,13 @@ function renderQuestion() {
 function correctAnswer() {
   var answer = questionArray[currentQuestion].correct;
   var userChoice = this.textContent;
-  if (userChoice === answer) {
+  if (currentQuestion === 9 && userChoice === answer) {
+    points += 10 + timeLeft;
+    pointsEl.textContent = "Score " + points;
+    gameOver();
+  } else if (userChoice === answer) {
     points += 10;
+    pointsEl.textContent = "Score " + points;
     currentQuestion++;
     renderQuestion();
   } else {
@@ -146,23 +158,49 @@ function restartButton() {
 function gameOver() {
   answersEl.style.display = "none";
   questionEl.style.display = "none";
+  submitFormEl.style.display = "block";
   restartBtn.style.display = "block";
+  highScoreBtn.style.display = "block";
+  timerEl.style.position = "relative";
+  timerEl.style.bottom = "-5rem";
   restartButton();
+  highScore();
 }
 
-// TODO make high score page and points function correctly
-// TODO gameOver needs end state if all questions answered
+function highScore() {
+  localStorage.setItem("Score", points);
+}
+
+// TODO make high score page populate values (create another JS file to do this)
+// TODO see if you can get multiple high score values to save
 
 function init() {
   restartBtn.style.display = "none";
   pointsEl.style.display = "none";
   answersEl.style.display = "none";
+  submitFormEl.style.display = "none";
 }
+
+function initHighScore() {
+  highScoreEl.textContent = getScore;
+  // userNameEl.textContent = getName;
+}
+
+submitBtn.addEventListener("click", function () {
+  event.preventDefault();
+  location.replace("high-scores.html");
+});
 
 startBtn.addEventListener("click", function () {
   startBtn.style.display = "none";
+  submitFormEl.style.display = "none";
+  pointsEl.style.display = "block";
+  pointsEl.textContent = "Score " + points;
+  highScoreBtn.style.display = "none";
   countDown();
   renderQuestion();
 });
 
 init();
+// TODO Maybe get rid of this? Making js file so shouldn't need
+initHighScore();

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100vh;
     display:flex;
     flex-direction: column;
     font-family: "Lucida Console", Monaco, monospace;
@@ -13,6 +14,10 @@ body {
 
 html {
     min-height: 100%;
+}
+
+a{
+    text-decoration: none;
 }
 
 header{
@@ -30,6 +35,8 @@ header{
 }
 
 .questions-box{
+    position: relative;
+    bottom: -15rem;
     font-size: 3rem;
     width: 65%;
     text-align: center;
@@ -49,15 +56,13 @@ header{
 
 .answer-boxes button{
     display:flex;
+    position: relative;
+    bottom: -15rem;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width: 40%;
     height: 4rem;
-}
-
-.buttons{
-    display: flex;
 }
 
 .btn{
@@ -80,26 +85,71 @@ header{
     transition: ease-out 0.4s;
   }
 
+  .btn:focus {
+      box-shadow: none;
+
+  }
+
 .btn:hover{
     box-shadow: inset 0 0 50px 25px #D80286;
 }
 
+.btn-default{
+    position: relative;
+    top: -3.75rem;
+    right: -14rem;
+}
+
 .timer{
     /* border: solid yellow; */
-    font-size: 4rem;
+    width: 20rem;
+    font-size: 2rem;
+    text-align: center;
     position: relative;
-    bottom: -2rem;
+    bottom: -15rem;
 }
 
 .high-score-header{
     text-align: center;
 }
 
-.points{
-    padding: 4rem;
+.point-box{
+    position: relative;
+    bottom: 20rem;
+    right: -40rem;
+    padding: 1rem;
+    font-size: 3rem;
 }
 
+.name-submission{
+    position: relative;
+    bottom: -5rem;
+    left: -3rem;
+}
+
+.table{
+    text-align: center;
+    color: white;
+    width: 25%;
+    font-size: 3rem;
+}
+
+#restart{
+    position: relative;
+    bottom: -20rem;
+ 
+}
+
+#highScores{
+    height: 5rem;
+    font-size: 1.5rem;
+}
+
+
 @media screen and (max-width: 768px) {
+    body{
+        overflow-x: hidden;
+    }
     .starting-box,
     .questions-box,
     .timer{
@@ -107,8 +157,20 @@ header{
         text-align: center;
     }
 
-    .answer-boxes button{
-        width: 10rem;
-     
+    .questions-box{
+        position: relative;
+        bottom: -5rem;
     }
+
+    .answer-boxes{
+        position: relative;
+        bottom: 10rem;
+    }
+
+    .answer-boxes button{
+        width: 100%;
+        height: 4rem;
+        font-size: 1rem;
+    }
+
 }

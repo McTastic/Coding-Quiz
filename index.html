@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Coding Quiz</title>
   </head>
 
   <body>
     <header>
-      <a href="./high-scores.html"><button class="btn">High Scores</button></a>
+      <a href="./high-scores.html"><button class="btn" id="highScores">High Scores</button></a>
     </header>
     <div class="starting-box" id="start-box">Click Start to Begin!</div>
     <div class="questions-box" id="qBox"></div>
@@ -25,7 +26,14 @@
       <button class="btn" id="restart">Restart</button>
     </div>
     <div class="timer" id="time"></div>
-    <div class="point-box" id="points">Points</div>
+    <div class="point-box" id="points"></div>
+    <form class="form-inline name-submission" id="submitForm">
+        <div class="form-group">
+          <label for="exampleInputName2">Name</label>
+          <input type="text" class="form-control" id="exampleInputName2" placeholder="">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-default" id="submit">Submit</button>
 
     <script src="script.js"></script>
   </body>
