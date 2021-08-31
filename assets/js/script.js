@@ -16,6 +16,7 @@ var answerD = document.getElementById("choiceD");
 var timeLeft = 60;
 var points = 0;
 var currentQuestion = 0;
+var playerName = "Name"
 
 // small function to remove initial lag when timer starts
 function noDelaySetInterval(func, interval) {
@@ -171,7 +172,6 @@ function gameOver() {
   answersEl.style.display = "none";
   questionEl.style.display = "none";
   pointsEl.style.display = "none";
-  submitFormEl.style.display = "block";
   restartBtn.style.display = "block";
   highScoreBtn.style.display = "block";
   timerEl.style.position = "relative";
@@ -181,12 +181,42 @@ function gameOver() {
 }
 // Storing the point value to local storage for use on the high score page 
 function highScore() {
-  var getScore = localStorage.getItem("Score");
-  if (points > getScore){
-  localStorage.setItem("Score", points);
-} else if (points <= getScore) {
+  var getScore1 = localStorage.getItem("Score");
+  var getScore2 = localStorage.getItem("Score2");
+  var getScore3 = localStorage.getItem("Score3");
   submitFormEl.style.display = "none";
+//  if no values on high score, places value at first place
+  if (points > getScore1){
+    localStorage.setItem("Score", points);
+    playerName = "PlayerName";
+    submitFormEl.style.display = "block";
+// replaces highest score with new value if greater than previous
+  } if (getScore1 > 0 && points > getScore1){
+  submitFormEl.style.display = "block";
+  localStorage.setItem("Score2", getScore1);
+  localStorage.setItem("Score3", getScore2);
+  var playerName3 = localStorage.getItem("PlayerName2");
+  localStorage.setItem("PlayerName3", playerName3);
+  var playerName2 = localStorage.getItem("PlayerName")
+  localStorage.setItem("PlayerName2", playerName2);
+  playerName = "PlayerName";
+} 
+// if player gets a new 2nd place score
+if (getScore1 >= points && points >= getScore2){
+  submitFormEl.style.display = "block";
+  var playerName3 = localStorage.getItem("PlayerName2");
+  localStorage.setItem("PlayerName3", playerName3);
+  localStorage.setItem("Score3", getScore2);
+  localStorage.setItem("Score2", points);
+  playerName = "PlayerName2";
+} 
+// if player gets a new 3rd place score
+ if (getScore1 > points && getScore2 >= points && pionts >getScore3){
+  submitFormEl.style.display = "block";
+  playerName = "PlayerName3"
+  localStorage.setItem("Score3", points)
 }
+// no form to enter high score since no score was beaten
 }
 // TODO see if you can get multiple high score values to save
 
@@ -198,9 +228,9 @@ function init() {
 }
 // Sumbit button for entering name to put on high score page. 
 submitBtn.addEventListener("click", function () {
-  event.preventDefault();
+  event.preventDefault(); console.log(playerName);
   location.replace("high-scores.html");
-  localStorage.setItem("PlayerName", userImput.value);
+  localStorage.setItem(playerName, userImput.value); 
 });
 // Start button to start the game and render the correct items on the page
 startBtn.addEventListener("click", function () {

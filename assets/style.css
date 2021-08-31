@@ -22,7 +22,6 @@ a{
 
 header{
     width: 99%;
-    /* border: solid green; */
     font-size: 2rem;
 }
 
@@ -30,8 +29,6 @@ header{
     display:flex;
     padding: 5rem 0 5rem 0;
     font-size: 6rem;
-
-    /* border: solid red; */
 }
 
 .questions-box{
@@ -40,7 +37,6 @@ header{
     font-size: 3rem;
     width: 65%;
     text-align: center;
-    /* border: solid blue; */
 }
 
 
@@ -50,7 +46,6 @@ header{
     justify-content: space-evenly;
     width: 55%;
     margin: 2rem;
-    /* border: solid green; */
     font-size: 2.5rem;
 }
 
@@ -102,7 +97,6 @@ header{
 }
 
 .timer{
-    /* border: solid yellow; */
     width: 20rem;
     font-size: 2rem;
     text-align: center;
