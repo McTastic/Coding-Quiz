@@ -194,9 +194,9 @@ header{
         position: unset;   
     }
     .btn {
-        -webkit-transition: ease-out 0.4s;
-        -moz-transition: ease-out 0.4s;
-        transition: ease-out 0.4s;
+        -webkit-transition: unset;
+        -moz-transition: unset;
+        transition: unset;
     }
     .btn:hover{
         box-shadow: unset;
