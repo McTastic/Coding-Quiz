@@ -10,7 +10,6 @@ var getScore3 = localStorage.getItem("Score3");
 var getName = localStorage.getItem("PlayerName");
 var getName2 = localStorage.getItem('PlayerName2');
 var getName3 = localStorage.getItem("PlayerName3");
-var submitFormEl = document.getElementById("submitForm");
 
 function initHighScore() {
     highScoreEl.textContent = getScore1;
