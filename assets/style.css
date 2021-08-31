@@ -197,6 +197,7 @@ header{
         -webkit-transition: unset;
         -moz-transition: unset;
         transition: unset;
+        box-shadow: unset;
     }
     .btn:hover{
         box-shadow: unset;
