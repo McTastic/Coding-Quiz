@@ -191,7 +191,9 @@ header{
 
     }
     .btn-default{
-        position: unset;
-        
+        position: unset;   
+    }
+    .btn:hover{
+        box-shadow: unset;
     }
 }

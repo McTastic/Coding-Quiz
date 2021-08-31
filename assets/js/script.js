@@ -216,9 +216,7 @@ if (getScore1 >= points && points >= getScore2){
   playerName = "PlayerName3"
   localStorage.setItem("Score3", points)
 }
-// no form to enter high score since no score was beaten
 }
-// TODO see if you can get multiple high score values to save
 
 function init() {
   restartBtn.style.display = "none";
