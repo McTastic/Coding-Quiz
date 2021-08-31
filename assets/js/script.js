@@ -102,6 +102,21 @@ var questionArray = [
     correct: "/*",
   },
 ];
+// simple function to shuffle the questions every time the quiz starts
+function shuffle(array) {
+  var currentIndex = array.length,
+    randomIndex;
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = 
+    [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+}
 
 // function to render question to page
 function renderQuestion() {
@@ -109,6 +124,7 @@ function renderQuestion() {
   startBox.style.display = "none";
   //   for loop which displays question and answers
   for (var i = 0; i < questionArray.length; i++) {
+    // currentQuestion = Math.floor(Math.random() * questionArray.length)
     if (i < questionArray.length) {
       var nextQuestion = questionArray[currentQuestion].q;
       questionEl.textContent = nextQuestion;
@@ -132,7 +148,7 @@ function correctAnswer() {
   var userChoice = this.textContent;
   if (userChoice !== answer) {
     timeLeft -= 5;
-    timerEl.textContent="Time Remaining " + timeLeft;
+    timerEl.textContent = "Time Remaining " + timeLeft;
   } else if (currentQuestion === 9 && userChoice === answer) {
     points += 10 + timeLeft;
     pointsEl.textContent = "Score " + points;
@@ -142,7 +158,6 @@ function correctAnswer() {
     pointsEl.textContent = "Score " + points;
     currentQuestion++;
     renderQuestion();
-
   }
 }
 
@@ -181,7 +196,7 @@ function init() {
 submitBtn.addEventListener("click", function () {
   event.preventDefault();
   location.replace("high-scores.html");
-  localStorage.setItem("PlayerName",userImput.value)
+  localStorage.setItem("PlayerName", userImput.value);
 });
 
 startBtn.addEventListener("click", function () {
@@ -190,6 +205,7 @@ startBtn.addEventListener("click", function () {
   pointsEl.style.display = "block";
   pointsEl.textContent = "Score " + points;
   highScoreBtn.style.display = "none";
+  shuffle(questionArray);
   countDown();
   renderQuestion();
 });
