@@ -193,4 +193,8 @@ header{
     .btn-default{
         position: unset;   
     }
+    .btn {
+    background: #D80286;
+    color: white;
+    }
 }
