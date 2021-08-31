@@ -194,10 +194,10 @@ header{
         position: unset;   
     }
     .btn {
-        -webkit-transition: unset;
-        -moz-transition: unset;
-        transition: unset;
-        box-shadow: unset;
+        -webkit-transition: none;
+        -moz-transition: none;
+        transition: none;
+        box-shadow: none;
     }
     .btn:hover{
         box-shadow: unset;
