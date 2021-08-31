@@ -102,7 +102,7 @@ var questionArray = [
     correct: "/*",
   },
 ];
-// simple function to shuffle the questions every time the quiz starts
+// function to shuffle the questions every time the quiz starts
 function shuffle(array) {
   var currentIndex = array.length,
     randomIndex;
@@ -166,7 +166,7 @@ function restartButton() {
     location.reload();
   });
 }
-
+// Triggered at the end of the game, whether time runs out or the user answers all questions
 function gameOver() {
   answersEl.style.display = "none";
   questionEl.style.display = "none";
@@ -179,11 +179,15 @@ function gameOver() {
   restartButton();
   highScore();
 }
-
+// Storing the point value to local storage for use on the high score page 
 function highScore() {
+  var getScore = localStorage.getItem("Score");
+  if (points > getScore){
   localStorage.setItem("Score", points);
+} else if (points <= getScore) {
+  submitFormEl.style.display = "none";
 }
-
+}
 // TODO see if you can get multiple high score values to save
 
 function init() {
@@ -192,13 +196,13 @@ function init() {
   answersEl.style.display = "none";
   submitFormEl.style.display = "none";
 }
-
+// Sumbit button for entering name to put on high score page. 
 submitBtn.addEventListener("click", function () {
   event.preventDefault();
   location.replace("high-scores.html");
   localStorage.setItem("PlayerName", userImput.value);
 });
-
+// Start button to start the game and render the correct items on the page
 startBtn.addEventListener("click", function () {
   startBtn.style.display = "none";
   submitFormEl.style.display = "none";
