@@ -193,6 +193,11 @@ header{
     .btn-default{
         position: unset;   
     }
+    .btn {
+        -webkit-transition: ease-out 0.4s;
+        -moz-transition: ease-out 0.4s;
+        transition: ease-out 0.4s;
+    }
     .btn:hover{
         box-shadow: unset;
     }
