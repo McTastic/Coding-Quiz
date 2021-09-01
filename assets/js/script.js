@@ -16,7 +16,7 @@ var answerD = document.getElementById("choiceD");
 var timeLeft = 60;
 var points = 0;
 var currentQuestion = 0;
-var playerName = "Name"
+var playerName;
 
 // small function to remove initial lag when timer starts
 function noDelaySetInterval(func, interval) {
