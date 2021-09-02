@@ -189,6 +189,11 @@ function highScore() {
   var getScore2 = localStorage.getItem("Score2");
   var getScore3 = localStorage.getItem("Score3");
   submitFormEl.style.display = "none";
+  getScore3 = 0;
+
+  if (points === 0){
+    return;
+  }
 //  if no values on high score, places value at first place
   if (points > getScore1){
     localStorage.setItem("Score", points);
@@ -231,11 +236,12 @@ function init() {
 // Sumbit button for entering name to put on high score page. 
 submitBtn.addEventListener("click", function () {
   event.preventDefault(); 
-  location.replace("high-scores.html");
-  localStorage.setItem(playerName, userImput.value); 
   if (!userImput.value){
     return alert("You must enter a name to submit a high score.")
-  }
+  } else{ 
+     location.replace("high-scores.html");
+     localStorage.setItem(playerName, userImput.value); 
+    }
 });
 // Start button to start the game and render the correct items on the page
 startBtn.addEventListener("click", function () {

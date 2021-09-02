@@ -13,8 +13,8 @@ var getName3 = localStorage.getItem("PlayerName3");
 var clearBtn = document.getElementById("clear");
 
 function initHighScore() {
-  console.log(getScore3);
-  if (getScore3 == "null"){
+// added this if statement due to Score being set to null. In the future will use arrays....
+  if (getScore3 == "null" && getScore1 > 0 && getScore2 > 0){
     userNameEl.textContent = getName;
     userNameEl2.textContent = getName2;
     userNameEl3.textContent === " ";
