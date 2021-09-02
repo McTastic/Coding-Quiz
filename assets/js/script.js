@@ -13,6 +13,7 @@ var answerA = document.getElementById("choiceA");
 var answerB = document.getElementById("choiceB");
 var answerC = document.getElementById("choiceC");
 var answerD = document.getElementById("choiceD");
+var incorrectEl = document.getElementById("incorrect");
 var timeLeft = 60;
 var points = 0;
 var currentQuestion = 0;
@@ -150,6 +151,7 @@ function correctAnswer() {
   if (userChoice !== answer) {
     timeLeft -= 5;
     timerEl.textContent = "Time Remaining " + timeLeft;
+    incorrectEl.textContent = "Incorrect!";
   } else if (currentQuestion === 9 && userChoice === answer) {
     points += 10 + timeLeft;
     pointsEl.textContent = "Score " + points;
@@ -159,6 +161,7 @@ function correctAnswer() {
     pointsEl.textContent = "Score " + points;
     currentQuestion++;
     renderQuestion();
+    incorrectEl.textContent = "";
   }
 }
 
@@ -172,6 +175,7 @@ function gameOver() {
   answersEl.style.display = "none";
   questionEl.style.display = "none";
   pointsEl.style.display = "none";
+  incorrectEl.style.display= "none";
   restartBtn.style.display = "block";
   highScoreBtn.style.display = "block";
   timerEl.style.position = "relative";
@@ -211,7 +215,7 @@ if (getScore1 >= points && points >= getScore2){
   playerName = "PlayerName2";
 } 
 // if player gets a new 3rd place score
- if (getScore1 > points && getScore2 >= points && pionts >getScore3){
+ if (getScore1 > points && getScore2 >= points && points > getScore3){
   submitFormEl.style.display = "block";
   playerName = "PlayerName3"
   localStorage.setItem("Score3", points)
