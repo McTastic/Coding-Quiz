@@ -13,14 +13,23 @@ var getName3 = localStorage.getItem("PlayerName3");
 var clearBtn = document.getElementById("clear");
 
 function initHighScore() {
+  console.log(getScore3);
+  if (getScore3 == "null"){
+    userNameEl.textContent = getName;
+    userNameEl2.textContent = getName2;
+    userNameEl3.textContent === " ";
+    highScoreEl.textContent = getScore1;
+    highScoreEl2.textContent = getScore2;
+    highScoreEl3.textContent === " ";
+    }  else {
     highScoreEl.textContent = getScore1;
     highScoreEl2.textContent = getScore2;
     highScoreEl3.textContent = getScore3;
     userNameEl.textContent = getName;
     userNameEl2.textContent = getName2;
     userNameEl3.textContent = getName3;
-  }
-
+}
+}
   clearBtn.addEventListener("click", function(){
     event.preventDefault();
     localStorage.clear();
