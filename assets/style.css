@@ -27,8 +27,16 @@ header{
 
 .starting-box{
     display:flex;
+    flex-direction: column;
+    align-items: center;
     padding: 5rem 0 5rem 0;
     font-size: 6rem;
+}
+
+.starting-box p{
+    font-size: 1.25rem;
+    text-align: center;
+    width: 50%;
 }
 
 .questions-box{
