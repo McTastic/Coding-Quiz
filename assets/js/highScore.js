@@ -10,6 +10,7 @@ var getScore3 = localStorage.getItem("Score3");
 var getName = localStorage.getItem("PlayerName");
 var getName2 = localStorage.getItem('PlayerName2');
 var getName3 = localStorage.getItem("PlayerName3");
+var clearBtn = document.getElementById("clear");
 
 function initHighScore() {
     highScoreEl.textContent = getScore1;
@@ -19,5 +20,11 @@ function initHighScore() {
     userNameEl2.textContent = getName2;
     userNameEl3.textContent = getName3;
   }
+
+  clearBtn.addEventListener("click", function(){
+    event.preventDefault();
+    localStorage.clear();
+    location.reload();
+  })
 
   initHighScore();

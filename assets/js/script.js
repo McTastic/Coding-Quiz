@@ -226,9 +226,12 @@ function init() {
 }
 // Sumbit button for entering name to put on high score page. 
 submitBtn.addEventListener("click", function () {
-  event.preventDefault(); console.log(playerName);
+  event.preventDefault(); 
   location.replace("high-scores.html");
   localStorage.setItem(playerName, userImput.value); 
+  if (!userImput.value){
+    return alert("You must enter a name to submit a high score.")
+  }
 });
 // Start button to start the game and render the correct items on the page
 startBtn.addEventListener("click", function () {
