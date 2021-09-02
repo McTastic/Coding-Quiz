@@ -6,6 +6,8 @@ At the end of the quiz, the user will be presented with a screen which is differ
 
 If the user achieves a "high score", then they are presented with an option at the end of the quiz to enter their name, and they will be redirected to a page which displays the 3 high scores. The user will be able to compete with their previous scores and those previous scores will move down a place if the user manages to beat them. All high scores are saved to local storage.
 
+One final note: There are some media queries in place just so that the site is viewable on mobile without it being too frustrating. This was done so that people who tested the site for me were able to view it and not to make the mobile experience on par with the desktop. This is currently designed with desktop in miind. 
+
 ![Screenshot-start-page](https://github.com/McTastic/Coding-Quiz/blob/main/assets/images/_F__Class%2520Bootcamp_Homework_Homework4_index.html.png?raw=true)
 
 ![Screenshot-highscore-page](https://github.com/McTastic/Coding-Quiz/blob/main/assets/images/_F__Class%2520Bootcamp_Homework_Homework4_high-scores.html.png?raw=true)
